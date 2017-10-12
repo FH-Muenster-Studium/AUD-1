@@ -5,12 +5,8 @@
 #include "single_linked_list.h"
 #include <stdlib.h>
 #include <stdio.h>
-
 #include <limits.h>
 
-//Todo: move next = null to the end
-
-//Todo: doppelt verkettete
 struct Node* createNode(int key, struct Node* next) {
     struct Node* node = malloc(sizeof(struct Node));
     node->key = key;
@@ -79,12 +75,12 @@ bool single_linked_list_is_empty(struct Node* singleLinkedList) {
 void single_linked_list_print(struct Node* singleLinkedList) {
     //Skip list element
     singleLinkedList = singleLinkedList->next;
-    if (singleLinkedList == NULL) {
-        printf("Liste ist leer\n");
-    }
     int i = 1;
     while (singleLinkedList != NULL) {
         printf("%d=%d\n", i++, singleLinkedList->key);
         singleLinkedList = singleLinkedList->next;
+    }
+    if (i == 1) {
+        printf("Die Liste ist leer\n");
     }
 }

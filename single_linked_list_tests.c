@@ -3,13 +3,9 @@
 //
 
 #include "single_linked_list_tests.h"
-
 #include "single_linked_list.h"
-
 #include <stdlib.h>
-
 #include <assert.h>
-
 #include <limits.h>
 
 bool contains(struct Node* singleLinkedList, int key) {
@@ -20,7 +16,7 @@ bool contains(struct Node* singleLinkedList, int key) {
     return false;
 }
 
-int index(struct Node* singleLinkedList, int key) {
+int indexOfKey(struct Node* singleLinkedList, int key) {
     int i = 0;
     while (singleLinkedList != NULL) {
         if (singleLinkedList->key == key) return i;
@@ -79,10 +75,10 @@ void runTests() {
     single_linked_list_insert(singleLinkedList, 10 * 100);
 
     // Check if sorting works
-    assert(index(singleLinkedList, 10) == 1);
-    assert(index(singleLinkedList, 10 * 10) == 2);
-    assert(index(singleLinkedList, 10 * 100) == 3);
-    assert(index(singleLinkedList, 10 * 1000) == 4);
+    assert(indexOfKey(singleLinkedList, 10) == 1);
+    assert(indexOfKey(singleLinkedList, 10 * 10) == 2);
+    assert(indexOfKey(singleLinkedList, 10 * 100) == 3);
+    assert(indexOfKey(singleLinkedList, 10 * 1000) == 4);
 
     // Check if deletion from invalid key is working
     assert(!single_linked_list_delete(singleLinkedList, INT_MIN));
