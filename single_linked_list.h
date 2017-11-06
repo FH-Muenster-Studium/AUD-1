@@ -16,9 +16,9 @@ struct Node* single_linked_list_init();
 
 void single_linked_list_deinit(struct Node* singleLinkedList);
 
-void single_linked_list_insert(struct Node* singleLinkedList, int key);
+void single_linked_list_insert(struct Node** singleLinkedList, int key);
 
-bool single_linked_list_delete(struct Node* singleLinkedList, int key);
+bool single_linked_list_delete(struct Node** singleLinkedList, int key);
 
 bool single_linked_list_is_empty(struct Node* singleLinkedList);
 

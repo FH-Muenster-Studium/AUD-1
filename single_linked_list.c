@@ -31,45 +31,49 @@ bool isInvalidKey(int key) {
     return key == INT_MIN;
 }
 
-void single_linked_list_insert(struct Node* singleLinkedList, int key) {
+//Todo: check if *singleLinkedList is same as the one that is getting replaced
+void single_linked_list_insert(struct Node** singleLinkedList, int key) {
     if (isInvalidKey(key)) {
         printf("Bitte geben Sie eine valide Zahl ein\n");
         return;
     }
-    struct Node* prev = singleLinkedList;
-    while (singleLinkedList != NULL) {
-        if (key < singleLinkedList->key) {
+    struct Node* linkedList = *singleLinkedList;
+    struct Node* prev = linkedList;
+    while (linkedList != NULL) {
+        if (key < linkedList->key) {
             prev->next = createNode(key, prev->next);
             break;
-        } else if (singleLinkedList->next == NULL) {
-            singleLinkedList->next = createNode(key, NULL);
+        } else if (linkedList->next == NULL) {
+            linkedList->next = createNode(key, NULL);
             break;
         }
-        prev = singleLinkedList;
-        singleLinkedList = singleLinkedList->next;
+        prev = linkedList;
+        linkedList = linkedList->next;
     }
 }
 
-bool single_linked_list_delete(struct Node* singleLinkedList, int key) {
+//Todo: check if *singleLinkedList is same as the one that is getting deleted
+bool single_linked_list_delete(struct Node** singleLinkedList, int key) {
     if (isInvalidKey(key)) {
         printf("Bitte geben Sie eine valide Zahl ein\n");
         return false;
     }
-    struct Node* prev = singleLinkedList;
-    while (singleLinkedList != NULL) {
-        if (singleLinkedList->key == key) {
-            prev->next = singleLinkedList->next;
-            free(singleLinkedList);
+    struct Node* linkedList = *singleLinkedList;
+    struct Node* prev = linkedList;
+    while (linkedList != NULL) {
+        if (linkedList->key == key) {
+            prev->next = linkedList->next;
+            free(linkedList);
             return true;
         }
-        prev = singleLinkedList;
-        singleLinkedList = singleLinkedList->next;
+        prev = linkedList;
+        linkedList = linkedList->next;
     }
     return false;
 }
 
 bool single_linked_list_is_empty(struct Node* singleLinkedList) {
-    return singleLinkedList->next == NULL;
+    return singleLinkedList == NULL;
 }
 
 void single_linked_list_print(struct Node* singleLinkedList) {

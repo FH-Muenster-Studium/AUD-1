@@ -27,12 +27,12 @@ int indexOfKey(struct Node* singleLinkedList, int key) {
 }
 
 void runTests() {
-    struct Node* singleLinkedList = single_linked_list_init();
+    struct Node* singleLinkedList = NULL;
 
     // Should be empty after init
     assert(single_linked_list_is_empty(singleLinkedList));
 
-    single_linked_list_insert(singleLinkedList, 12);
+    single_linked_list_insert(&singleLinkedList, 12);
 
     // Test if 12 got added successfully
     assert(contains(singleLinkedList, 12));
